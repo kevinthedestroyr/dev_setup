@@ -10,14 +10,18 @@ fi
 
 HERE="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
-# copy config files
-# do before switching to root
+# tmux
 cp {"$HERE","$HOME"}/.tmux.conf
+cp {"$HERE","$HOME"}/.tmux/theme.conf
+
+# nvim
 mkdir -p "$HOME"/.config/nvim/ftplugin
 cp {"$HERE","$HOME"}/.config/nvim/init.vim
 for f in "$HERE"/.config/nvim/ftplugin/*; do
     cp {"$HERE","$HOME"}/.config/nvim/ftplugin/$(basename $f)
 done
+
+# zsh
 cp {"$HERE","$HOME"}/.zshrc
 
 sudo apt update

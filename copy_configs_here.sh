@@ -11,6 +11,7 @@ function echocp() {
 HERE="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 echocp {"$HOME","$HERE"}/.tmux.conf
+echocp {"$HOME","$HERE"}/.tmux/theme.conf
 echocp {"$HOME","$HERE"}/.config/nvim/init.vim
 for f in "$HOME"/.config/nvim/ftplugin/*; do
     echocp {"$HOME","$HERE"}/.config/nvim/ftplugin/$(basename $f)
