@@ -12,6 +12,7 @@ HERE="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 # tmux
 cp {"$HERE","$HOME"}/.tmux.conf
+mkdir -p "$HOME"/.tmux
 cp {"$HERE","$HOME"}/.tmux/theme.conf
 
 # nvim
@@ -24,6 +25,7 @@ done
 # zsh
 cp {"$HERE","$HOME"}/.zshrc
 
+sudo add-apt-repository ppa:deadsnakes/ppa
 sudo apt update
 sudo apt upgrade
 
@@ -32,7 +34,9 @@ sudo apt -y install zsh
 chsh -s /usr/bin/zsh
 
 # oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+if [[ ! -d ~/.oh-my-zsh ]]; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+fi
 
 # tmux
 sudo apt -y install tmux
@@ -49,14 +53,12 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 nvim +PlugInstall +qall
 
 # python3.8
-sudo add-apt-repository ppa:deadsnakes/ppa
-sudo apt update
 sudo apt -y install python3.8
 sudo apt -y install python3-pip
 sudo apt -y install python3-virtualenv
 
 # node 12
-sudo curl -sL https://deb.nodesource.com/setup_12.x | -E bash -
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 sudo apt -y install nodejs
 
 # fd (find)
