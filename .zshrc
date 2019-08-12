@@ -104,3 +104,5 @@ export FZF_DEFAULT_COMMAND='fd --type f'
 
 # don't show username/host in agnoster prompt
 DEFAULT_USER=$USER
+
+alias nvc='nvim ~/.config/nvim/init.vim'
